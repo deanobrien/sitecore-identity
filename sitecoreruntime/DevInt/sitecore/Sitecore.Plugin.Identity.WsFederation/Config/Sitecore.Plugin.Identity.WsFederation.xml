@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings> 
+  <Sitecore>
+    <ExternalIdentityProviders>
+      <IdentityProviders>
+        <WsFederation type="Sitecore.Plugin.IdentityProviders.IdentityProvider, Sitecore.Plugin.IdentityProviders">
+          <AuthenticationScheme>IdS4-WsFederation</AuthenticationScheme>
+          <DisplayName>WS-Federation</DisplayName>
+          <Enabled>true</Enabled>
+          <!--ADFS Configuration -->
+          <MetadataAddress>https://<YOUR SERVER>/federationmetadata/2007-06/federationmetadata.xml</MetadataAddress>
+          <Wtrealm>urn:<YOUR REALM></Wtrealm>
+          <ClaimsTransformations>
+
+<!-- NAME -->
+
+            <nameToName type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+              <SourceClaims>
+                <Claim1 type="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" />
+              </SourceClaims>
+              <NewClaims>
+                <Claim1 type="name" />
+              </NewClaims>
+            </nameToName>
+
+<!-- EMAIL -->
+
+            <emailToEmail type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+              <SourceClaims>
+                <Claim1 type="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn" />
+              </SourceClaims>
+              <NewClaims>
+                <Claim1 type="email" />
+              </NewClaims>
+            </emailToEmail>
+
+<!-- ROLE -->
+<!-- ISADMIN -->
+
+            <AzureADUserToAdminUser type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+              <SourceClaims>
+                <Claim1 type="groups" value="84a3b970-0c19-4728-a9bf-8513f2623774" />
+              </SourceClaims>
+              <NewClaims>
+                <Claim2 type="http://www.sitecore.net/identity/claims/isAdmin" value="true"/>
+		            <Claim2 type="role" value="sitecore\admin"/>
+              </NewClaims>
+            </AzureADUserToAdminUser>
+
+<!-- COMMENT -->
+
+            <upnToComment type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+              <SourceClaims>
+                <Claim6 type="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname" />
+              </SourceClaims>
+              <NewClaims>
+                <Claim1 type="comment" value="Created from ADFS"/>
+              </NewClaims>
+            </upnToComment>
+
+<!-- UPN -->
+
+            <upnToUpn type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+              <SourceClaims>
+                <Claim1 type="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn" /> <!-- email " /> -->
+              </SourceClaims>
+              <NewClaims>
+                <Claim1 type="upn" />
+              </NewClaims>
+            </upnToUpn>
+
+<!-- FIRST-->
+
+            <first type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+              <SourceClaims>
+                <Claim7 type="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname" />
+              </SourceClaims>
+              <NewClaims>
+                <Claim7 type="first"/>
+              </NewClaims>
+            </first>
+
+<!-- LAST -->
+
+            <last type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+              <SourceClaims>
+                <Claim6 type="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname" />
+              </SourceClaims>
+              <NewClaims>
+                <Claim6 type="last"/>
+              </NewClaims>
+            </last>
+            <AzureADUserToReader type="Sitecore.Plugin.IdentityProviders.DefaultClaimsTransformation, Sitecore.Plugin.IdentityProviders">
+            	<SourceClaims>
+                <Claim1 type="groups" value="27068007-01c9-4dda-b4ef-a8e74f4c834f" />
+            	</SourceClaims>
+            	<NewClaims>
+            		<Claim1 type="role" value="azure\reader"/>
+            	</NewClaims>
+            </AzureADUserToReader>
+ 
+          </ClaimsTransformations>
+        </WsFederation>
+      </IdentityProviders>
+    </ExternalIdentityProviders>
+  </Sitecore>
+</Settings>

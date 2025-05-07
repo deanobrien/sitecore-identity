@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SitecorePlugin PluginName="Sitecore.Plugin.Identity.WsFederation" AssemblyName="Sitecore.Plugin.Identity.WsFederation" Version="1.0.0">
+  <Dependencies>
+    <Dependency name="Sitecore.Plugin.IdentityProviders">7.0.328</Dependency>
+  </Dependencies>
+  <Tags />
+</SitecorePlugin>

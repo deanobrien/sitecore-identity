@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.WsFederation" Version="2.1.2" />
+    <PackageReference Include="OctoPack" Version="3.6.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Sitecore.Framework.Runtime.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Sitecore.Plugin.IdentityProviders" Version="7.0.326" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Config\DevInt\Sitecore.IdentityServer.Host.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Config\Uat\Sitecore.IdentityServer.Host.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sitecoreruntime\DevInt\Config\identityServer.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sitecoreruntime\DevInt\Config\Sitecore.IdentityServer.Host.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sitecoreruntime\DevInt\Config\Sitecore.Plugin.IdentityProvider.AzureAd.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sitecoreruntime\DevInt\sitecore\Sitecore.Plugin.Identity.WsFederation\Config\Sitecore.Plugin.Identity.WsFederation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sitecoreruntime\DevInt\sitecore\Sitecore.Plugin.Identity.WsFederation\Sitecore.Plugin.manifest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sitecoreruntime\license.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
