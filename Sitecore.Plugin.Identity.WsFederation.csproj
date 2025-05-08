@@ -16,12 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Config\DevInt\Sitecore.IdentityServer.Host.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Config\Uat\Sitecore.IdentityServer.Host.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="sitecoreruntime\DevInt\Config\identityServer.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
